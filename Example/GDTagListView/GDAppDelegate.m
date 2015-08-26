@@ -7,12 +7,19 @@
 //
 
 #import "GDAppDelegate.h"
+#import "GDViewController.h"
 
 @implementation GDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] init];
+    [navigationController pushViewController:[[GDViewController alloc] init] animated:NO];
+    _window.rootViewController = navigationController;
+    [_window makeKeyAndVisible];
+    
     return YES;
 }
 

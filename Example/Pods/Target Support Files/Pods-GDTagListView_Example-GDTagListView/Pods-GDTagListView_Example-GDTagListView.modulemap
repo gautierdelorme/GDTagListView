@@ -1,0 +1,6 @@
+framework module GDTagListView {
+  umbrella header "Pods-GDTagListView_Example-GDTagListView-umbrella.h"
+
+  export *
+  module * { export * }
+}

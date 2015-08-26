@@ -5,6 +5,15 @@
 [![License](https://img.shields.io/cocoapods/l/GDTagListView.svg?style=flat)](http://cocoapods.org/pods/GDTagListView)
 [![Platform](https://img.shields.io/cocoapods/p/GDTagListView.svg?style=flat)](http://cocoapods.org/pods/GDTagListView)
 
+## Screenshot
+
+![AMTagListView](http://i.imgur.com/YV0XnJq.gif)
+
+## Description
+
+GDTagListView is a UIView subclass that allows to add a list of customizable tags.
+The design is coming from [AMTagListView](https://github.com/andreamazz/AMTagListView) by andreamazz and some code was extracted from [JCTagListView](https://github.com/lijingcheng/JCTagListView)
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -22,7 +31,7 @@ pod "GDTagListView"
 
 ## Author
 
-gautierdelorme, gautier.delorme@gmail.com
+Gautier Delorme
 
 ## License
 

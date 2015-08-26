@@ -10,4 +10,7 @@
 
 @interface GDTagView : UIView
 
+@property (nonatomic, assign) NSInteger padding;
+@property (nonatomic, assign) UIColor *tagColor;
+
 @end

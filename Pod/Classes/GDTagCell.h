@@ -13,5 +13,8 @@
 @property (nonatomic, assign) BOOL removeEnabled;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *removeLabel;
+@property (nonatomic, strong) UIColor *tagColor;
+@property (nonatomic, strong) UIFont *tagFont;
+@property (nonatomic, strong) UIFont *removeFont;
 
 @end

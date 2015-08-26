@@ -7,6 +7,13 @@
 //
 
 #import "GDTagCell.h"
+#import "GDTagView.h"
+
+@interface GDTagCell()
+
+@property (nonatomic, strong) GDTagView *tagView;
+
+@end
 
 @implementation GDTagCell
 
@@ -14,18 +21,21 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.layer.masksToBounds = YES;
-        self.layer.borderWidth = 1;
-        self.removeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 15, self.bounds.size.height)];
-        self.removeLabel.textAlignment = NSTextAlignmentCenter;
-        self.removeLabel.font = [UIFont boldSystemFontOfSize:14];
-        self.removeLabel.hidden = YES;
-        self.titleLabel = [[UILabel alloc] initWithFrame:self.bounds];
-        self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        self.titleLabel.font = [UIFont systemFontOfSize:14.0f];
-        [self.contentView addSubview:self.titleLabel];
-        [self.contentView addSubview:self.removeLabel];
+        self.tagColor = [UIColor darkGrayColor];
         self.removeEnabled = NO;
+        self.tagFont = [UIFont systemFontOfSize:14.0f];
+        self.removeFont = [UIFont boldSystemFontOfSize:17];
+        self.tagView = [[GDTagView alloc] initWithFrame:self.bounds];
+        self.tagView.tagColor = self.tagColor;
+        self.tagView.padding = 3;
+        self.tagView.backgroundColor = [UIColor clearColor];
+        self.removeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.removeLabel.textAlignment = NSTextAlignmentLeft;
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.titleLabel.textAlignment = NSTextAlignmentRight;
+        [self.tagView addSubview:self.titleLabel];
+        [self.tagView addSubview:self.removeLabel];
+        [self.contentView addSubview:self.tagView];
     }
     
     return self;
@@ -34,12 +44,19 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
+    self.tagView.tagColor = self.tagColor;
+    self.removeLabel.font = self.removeFont;
+    self.titleLabel.font = self.tagFont;
+    
     if (self.removeEnabled) {
-        self.removeLabel.hidden = NO;
-        self.titleLabel.frame = CGRectMake(self.removeLabel.frame.size.width, 0, self.bounds.size.width-self.removeLabel.frame.size.width, self.bounds.size.height);
+        self.tagView.frame = self.bounds;
+        self.removeLabel.frame = CGRectMake(self.tagView.bounds.size.width-15, 0, 10, self.bounds.size.height);
+        self.titleLabel.frame = CGRectMake(0, 0, self.removeLabel.frame.origin.x-self.tagView.frame.origin.x-5, self.bounds.size.height);
     } else {
-        self.removeLabel.hidden = YES;
-        self.titleLabel.frame = self.bounds;
+        self.tagView.frame = self.bounds;
+        self.removeLabel.frame = CGRectZero;
+        self.titleLabel.frame = CGRectMake(0, 0, self.tagView.bounds.size.width-4*self.tagView.padding, self.tagView.bounds.size.height);
     }
 }
 

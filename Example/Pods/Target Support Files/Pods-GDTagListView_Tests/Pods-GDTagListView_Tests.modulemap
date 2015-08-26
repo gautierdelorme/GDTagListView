@@ -1,0 +1,6 @@
+framework module Pods_GDTagListView_Tests {
+  umbrella header "Pods-GDTagListView_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

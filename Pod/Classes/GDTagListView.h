@@ -13,10 +13,14 @@ typedef void (^GDTagListViewBlock)(NSInteger index);
 @interface GDTagListView : UIView <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UIColor *tagColor;
+@property (nonatomic, strong) UIColor *textTagColor;
 @property (nonatomic, assign) CGFloat tagCornerRadius;
 @property (nonatomic, assign) BOOL scrollEnabled;
 @property (nonatomic, assign) CGSize contentSize;
 @property (nonatomic, assign) BOOL canRemove;
+@property (nonatomic, assign) NSString *removeTextLabel;
+@property (nonatomic, strong) UIFont *tagFont;
+@property (nonatomic, strong) UIFont *removeFont;
 
 - (void)setCompletionBlockWithSelected:(GDTagListViewBlock)completionBlock;
 

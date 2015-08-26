@@ -42,7 +42,11 @@ static NSString * const reuseIdentifier = @"tagViewCell";
     self.tagsArray = [NSMutableArray array];
     self.canRemove = NO;
     self.tagColor = [UIColor darkGrayColor];
+    self.textTagColor = [UIColor whiteColor];
     self.tagCornerRadius = 5;
+    self.removeTextLabel = @"x";
+    self.tagFont = [UIFont systemFontOfSize:14.0f];
+    self.removeFont = [UIFont boldSystemFontOfSize:17];
     
     GDCollectionViewFlowLayout *layout = [[GDCollectionViewFlowLayout alloc] init];
     
@@ -51,8 +55,11 @@ static NSString * const reuseIdentifier = @"tagViewCell";
     self.collectionView.dataSource = self;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.showsVerticalScrollIndicator = NO;
-    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.scrollEnabled = YES;
     [self.collectionView registerClass:[GDTagCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    
+    self.backgroundColor = [UIColor clearColor];
+    
     [self addSubview:self.collectionView];
 }
 
@@ -95,10 +102,6 @@ static NSString * const reuseIdentifier = @"tagViewCell";
         [self.collectionView reloadData];
 }
 
-- (NSMutableArray *)tags {
-    return self.tagsArray;
-}
-
 -(void)setScrollEnabled:(BOOL)scrollEnabled {
     self.collectionView.scrollEnabled = scrollEnabled;
 }
@@ -107,12 +110,45 @@ static NSString * const reuseIdentifier = @"tagViewCell";
     [self.collectionView setContentSize:contentSize];
 }
 
+-(void)setContentOffset:(CGPoint)offset animated:(BOOL)animated {
+    [self.collectionView setContentOffset:offset animated:animated];
+}
+
+-(void)setBackgroundColor:(UIColor *)backgroundColor {
+    self.collectionView.backgroundColor = backgroundColor;
+}
+
+-(void)setTagColor:(UIColor *)tagColor {
+    _tagColor = tagColor;
+    [self.collectionView reloadData];
+}
+
+-(void)setTextTagColor:(UIColor *)textTagColor {
+    _textTagColor = textTagColor;
+    [self.collectionView reloadData];
+}
+
+-(void)setTagFont:(UIFont *)tagFont {
+    _tagFont = tagFont;
+    [self.collectionView reloadData];
+}
+
+-(void)setRemoveFont:(UIFont *)removeFont {
+    _removeFont = removeFont;
+    [self.collectionView reloadData];
+}
+
+-(void)setCanRemove:(BOOL)canRemove {
+    _canRemove = canRemove;
+    [self.collectionView reloadData];
+}
+
 -(CGSize)contentSize {
     return self.collectionView.contentSize;
 }
 
--(void)setContentOffset:(CGPoint)offset animated:(BOOL)animated {
-    [self.collectionView setContentOffset:offset animated:animated];
+- (NSMutableArray *)tags {
+    return self.tagsArray;
 }
 
 - (CGFloat)getHeight
@@ -162,28 +198,26 @@ static NSString * const reuseIdentifier = @"tagViewCell";
     CGSize maxSize = CGSizeMake(collectionView.frame.size.width - layout.sectionInset.left - layout.sectionInset.right, layout.itemSize.height);
     
     CGRect frame = [self.tagsArray[indexPath.item] boundingRectWithSize:maxSize options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0f]} context:nil];
-    
-    return CGSizeMake(frame.size.width + 20.0f, layout.itemSize.height);
+    return CGSizeMake(frame.size.width + 40, layout.itemSize.height);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     GDTagCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor whiteColor];
-    cell.layer.borderColor = self.tagColor.CGColor;
-    cell.layer.cornerRadius = self.tagCornerRadius;
     cell.titleLabel.text = self.tagsArray[indexPath.item];
-    cell.titleLabel.textColor = self.tagColor;
-    cell.removeLabel.text = @"x";
-    cell.removeLabel.textColor = self.tagColor;
+    cell.titleLabel.textColor = self.textTagColor;
+    cell.removeLabel.text = self.removeTextLabel;
+    cell.removeLabel.textColor = self.textTagColor;
     cell.removeEnabled = self.canRemove;
-    
+    cell.tagColor = self.tagColor;
+    cell.tagFont = self.tagFont;
+    cell.removeFont = self.removeFont;
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.selectedBlock) {
+    if (self.selectedBlock && self.canRemove) {
         self.selectedBlock(indexPath.item);
     }
 }
