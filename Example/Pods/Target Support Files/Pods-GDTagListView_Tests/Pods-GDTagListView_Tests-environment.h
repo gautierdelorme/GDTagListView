@@ -12,6 +12,24 @@
 #define COCOAPODS_VERSION_MINOR_Expecta 0
 #define COCOAPODS_VERSION_PATCH_Expecta 2
 
+// FBSnapshotTestCase
+#define COCOAPODS_POD_AVAILABLE_FBSnapshotTestCase
+#define COCOAPODS_VERSION_MAJOR_FBSnapshotTestCase 2
+#define COCOAPODS_VERSION_MINOR_FBSnapshotTestCase 0
+#define COCOAPODS_VERSION_PATCH_FBSnapshotTestCase 3
+
+// FBSnapshotTestCase/Core
+#define COCOAPODS_POD_AVAILABLE_FBSnapshotTestCase_Core
+#define COCOAPODS_VERSION_MAJOR_FBSnapshotTestCase_Core 2
+#define COCOAPODS_VERSION_MINOR_FBSnapshotTestCase_Core 0
+#define COCOAPODS_VERSION_PATCH_FBSnapshotTestCase_Core 3
+
+// FBSnapshotTestCase/SwiftSupport
+#define COCOAPODS_POD_AVAILABLE_FBSnapshotTestCase_SwiftSupport
+#define COCOAPODS_VERSION_MAJOR_FBSnapshotTestCase_SwiftSupport 2
+#define COCOAPODS_VERSION_MINOR_FBSnapshotTestCase_SwiftSupport 0
+#define COCOAPODS_VERSION_PATCH_FBSnapshotTestCase_SwiftSupport 3
+
 // GDTagListView
 #define COCOAPODS_POD_AVAILABLE_GDTagListView
 #define COCOAPODS_VERSION_MAJOR_GDTagListView 0
