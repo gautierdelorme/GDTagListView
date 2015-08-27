@@ -7,4 +7,5 @@ end
 
 target 'GDTagListView_Tests', :exclusive => true do
   pod "GDTagListView", :path => "../"
+  pod "Specta"
 end
