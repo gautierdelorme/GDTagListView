@@ -6,6 +6,12 @@
 // project.
 
 
+// Expecta
+#define COCOAPODS_POD_AVAILABLE_Expecta
+#define COCOAPODS_VERSION_MAJOR_Expecta 1
+#define COCOAPODS_VERSION_MINOR_Expecta 0
+#define COCOAPODS_VERSION_PATCH_Expecta 2
+
 // GDTagListView
 #define COCOAPODS_POD_AVAILABLE_GDTagListView
 #define COCOAPODS_VERSION_MAJOR_GDTagListView 0
