@@ -1,27 +1,14 @@
 PODS:
-  - Expecta (1.0.2)
-  - FBSnapshotTestCase (2.0.3):
-    - FBSnapshotTestCase/SwiftSupport (= 2.0.3)
-  - FBSnapshotTestCase/Core (2.0.3)
-  - FBSnapshotTestCase/SwiftSupport (2.0.3):
-    - FBSnapshotTestCase/Core
   - GDTagListView (0.1.0)
-  - Specta (1.0.3)
 
 DEPENDENCIES:
-  - Expecta
-  - FBSnapshotTestCase
   - GDTagListView (from `../`)
-  - Specta
 
 EXTERNAL SOURCES:
   GDTagListView:
     :path: ../
 
 SPEC CHECKSUMS:
-  Expecta: 54e8a3530add08f4f0208c111355eda7cde74a53
-  FBSnapshotTestCase: d0eeca6bf87958e088b254396ae66873f971cfb1
   GDTagListView: 8e9b56aa9cea5d0e1a77726d68bdf34602054b13
-  Specta: cf3e4188cf35375c3ee2cd03f8db8f1f4ef98234
 
 COCOAPODS: 0.36.1
